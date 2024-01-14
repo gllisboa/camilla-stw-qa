@@ -1,0 +1,27 @@
+@startuml US026
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - US026 SSD-  Highlight in yellow text the date of posts created between 2 and 7 days ago
+
+autonumber
+
+actor "User" as User
+boundary System
+
+activate User
+    User -> System: Access DDD forum
+   
+  
+    activate System
+        System --> User : Return the default page 
+    deactivate System
+
+    User -> System : Access "New" page
+
+    activate System
+    System --> User: Highlights in yellow text the date of posts created between 2 and 7 days ago
+    deactivate System
+
+@enduml

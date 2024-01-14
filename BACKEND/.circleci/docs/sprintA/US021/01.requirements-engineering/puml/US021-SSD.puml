@@ -1,0 +1,27 @@
+@startuml US021
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - US021 SSD-  Highlight 2/3 highest commented post
+
+autonumber
+
+actor "User" as User
+boundary System
+
+activate User
+    User -> System: Access DDD forum
+   
+  
+    activate System
+        System --> User : Return the default page 
+    deactivate System
+
+    User -> System : Access "Popular" page
+
+    activate System
+    System --> User: Highlights in green the posts with more than 2/3 of the comments of the highest commented post
+    deactivate System
+
+@enduml

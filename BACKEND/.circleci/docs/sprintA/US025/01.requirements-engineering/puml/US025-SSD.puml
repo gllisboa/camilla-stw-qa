@@ -1,0 +1,25 @@
+@startuml US025-SSD
+title SSD - US025 - As a member, when I look at the unpopular posts, posts with less than two days should have the date in green text. 
+actor Member
+boundary System
+
+activate Member
+Member -> System: 1. Goes to DDD Forum Home Page
+activate System
+System -> Member: 2. Shows DDD Forum Home Page
+deactivate System
+Member -> System: 7. Logs into DDD Forum
+activate System
+System -> Member: 8. Confirms Login and returns to Home Page
+deactivate System
+Member -> System: 9. Clicks on the "Unpopular Posts" Button
+activate System
+System -> Member: 10. Shows "Unpopular Posts" Page
+deactivate System
+Member -> System: 11. Inserts a date on the text box and clicks on the refresh button
+activate System
+System -> Member: 12. Shows the Unpopular Posts with Less than Two Days, with the date in green text
+deactivate System
+deactivate Member
+
+@enduml

@@ -1,0 +1,49 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended"
+    ],
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "outDir": "./dist",
+        "rootDir": "./src",
+        "strict": true
+      },
+      "files": [
+        "src/**/*.ts",
+        "src/**/*.js",
+        "src/**/*.tsx"
+      ],
+    
+      "rules": {
+        "no-console": false,
+        "class-name": false, 
+        "interface-name": [true, "never-prefix"],
+        "member-access": [true, "check-format"],
+        "no-var-keyword": true, 
+        "prefer-const": true, 
+        "no-duplicate-imports": true, 
+        "no-constant-condition": true,     
+        "no-unused-variable": true, 
+        "no-conditional-assignment": true, 
+        "no-consecutive-blank-lines": [true, 2], 
+        "triple-equals": [true, "allow-null-check"],
+        "cyclomatic-complexity": [true, 10],
+        "max-func-body-length": [true, 30],
+        "max-classes-per-file": [true, 3],
+        "no-unused-expression": true,
+        "no-relative-imports": true,
+        "no-identical-functions": true,
+        "variable-name": [true, "ban-keywords", "check-format"],
+        "function-name": [true, "ban-keywords", "check-format"]
+      },
+      "linterOptions": {
+        "include": ["src/**/*.ts", "tests/**/*.ts"],
+        "exclude": ["node_modules/**", "dist/**"]
+    }
+ 
+} 

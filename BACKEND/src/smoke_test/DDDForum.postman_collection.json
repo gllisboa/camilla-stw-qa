@@ -1,0 +1,3814 @@
+{
+	"info": {
+		"_postman_id": "47389dd6-25cf-4318-9746-f20ce8bee1f4",
+		"name": "DDD Forum - Olga",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27918764"
+	},
+	"item": [
+		{
+			"name": "test cases",
+			"item": [
+				{
+					"name": "001 - Create Post Owner",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"let userName = pm.variables.replaceIn(\"tcuser{{$randomInt}}\");\r",
+									"let email = userName + \"@isep.ipp.pt\";\r",
+									"let password = \"complexPwd123\";\r",
+									"\r",
+									"pm.collectionVariables.set(\"poster-userName\", userName);\r",
+									"pm.collectionVariables.set(\"poster-email\", email);\r",
+									"pm.collectionVariables.set(\"poster-password\", password);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"username\":\"{{poster-userName}}\", \"email\":\"{{poster-email}}\", \"password\":\"{{poster-password}}\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "002 - Login Post Owner",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"    const resposta = pm.response.json();\r",
+									"\r",
+									"    pm.collectionVariables.set(\"poster-token\", resposta.accessToken);\r",
+									"\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\": \"{{poster-userName}}\",\"password\": \"{{poster-password}}\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "003 - Create Voter1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"let userName = pm.variables.replaceIn(\"tcvoter1{{$randomInt}}\");\r",
+									"let email = userName + \"@isep.ipp.pt\";\r",
+									"let password = \"complexPwd123\";\r",
+									"\r",
+									"pm.collectionVariables.set(\"voter1-userName\", userName);\r",
+									"pm.collectionVariables.set(\"voter1-email\", email);\r",
+									"pm.collectionVariables.set(\"voter1-password\", password);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"username\":\"{{voter1-userName}}\", \"email\":\"{{voter1-email}}\", \"password\":\"{{voter1-password}}\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "004 - Login Voter1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"    const resposta = pm.response.json();\r",
+									"\r",
+									"    pm.collectionVariables.set(\"voter1-token\", resposta.accessToken);\r",
+									"\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\": \"{{voter1-userName}}\",\"password\": \"{{voter1-password}}\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "005 - Create Voter2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"let userName = pm.variables.replaceIn(\"tcvoter2{{$randomInt}}\");\r",
+									"let email = userName + \"@isep.ipp.pt\";\r",
+									"let password = \"complexPwd123\";\r",
+									"\r",
+									"pm.collectionVariables.set(\"voter2-userName\", userName);\r",
+									"pm.collectionVariables.set(\"voter2-email\", email);\r",
+									"pm.collectionVariables.set(\"voter2-password\", password);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"username\":\"{{voter2-userName}}\", \"email\":\"{{voter2-email}}\", \"password\":\"{{voter2-password}}\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "006 - Login Voter2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"    const resposta = pm.response.json();\r",
+									"\r",
+									"    pm.collectionVariables.set(\"voter2-token\", resposta.accessToken);\r",
+									"\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\": \"{{voter2-userName}}\",\"password\": \"{{voter2-password}}\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "007 - TC001.01 - Assert 0 popular posts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Login test\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});\r",
+									"\r",
+									"const resposta = pm.response.json();\r",
+									"\r",
+									"pm.test('Number of posts to be 0', function(){\r",
+									"    pm.expect(resposta.posts.length).to.equal(0);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/popular",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"popular"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "008 - TC002.01 - Create mpp001",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{poster-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"mpp001\",\r\n    \"postType\": \"link\",\r\n    \"link\": \"www.isep.ipp.pt\",\r\n    \"text\": \"\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "009 - TC002.02 - Assert 1 popular posts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Login test\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});\r",
+									"\r",
+									"const resposta = pm.response.json();\r",
+									"\r",
+									"pm.test('Number of posts to be 1', function(){\r",
+									"    pm.expect(resposta.posts.length).to.equal(1);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/popular",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"popular"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "010 - TC003.01 - Create mpp002",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{poster-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"mpp002\",\r\n    \"postType\": \"link\",\r\n    \"link\": \"www.isep.ipp.pt\",\r\n    \"text\": \"\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "011 - TC003.02 - Create mpp003",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{poster-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"mpp003\",\r\n    \"postType\": \"link\",\r\n    \"link\": \"www.isep.ipp.pt\",\r\n    \"text\": \"\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "012 - TC003.03 - Create mpp004",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{poster-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"mpp004\",\r\n    \"postType\": \"link\",\r\n    \"link\": \"www.isep.ipp.pt\",\r\n    \"text\": \"\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "013 - TC003.04 - Create mpp005",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{poster-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"mpp005\",\r\n    \"postType\": \"link\",\r\n    \"link\": \"www.isep.ipp.pt\",\r\n    \"text\": \"\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "014 - TC003.05 - Create mpp006",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{poster-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"mpp006\",\r\n    \"postType\": \"link\",\r\n    \"link\": \"www.isep.ipp.pt\",\r\n    \"text\": \"\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "015 - TC003.06 - Create mpp007",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{poster-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"mpp007\",\r\n    \"postType\": \"link\",\r\n    \"link\": \"www.isep.ipp.pt\",\r\n    \"text\": \"\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "016 - TC003.07 - Create mpp008",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{poster-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"mpp008\",\r\n    \"postType\": \"link\",\r\n    \"link\": \"www.isep.ipp.pt\",\r\n    \"text\": \"\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "017 - TC003.08 - Create mpp009",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{poster-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"mpp009\",\r\n    \"postType\": \"link\",\r\n    \"link\": \"www.isep.ipp.pt\",\r\n    \"text\": \"\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "018 - TC003.09 - Create mpp010",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{poster-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"mpp010\",\r\n    \"postType\": \"link\",\r\n    \"link\": \"www.isep.ipp.pt\",\r\n    \"text\": \"\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "019 - TC003.10 - Create mpp011",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{poster-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"mpp011\",\r\n    \"postType\": \"link\",\r\n    \"link\": \"www.isep.ipp.pt\",\r\n    \"text\": \"\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "020 - TC003.11 - Create mpp012",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{poster-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"mpp012\",\r\n    \"postType\": \"link\",\r\n    \"link\": \"www.isep.ipp.pt\",\r\n    \"text\": \"\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "021 - TC003.12 - Create mpp013",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{poster-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"mpp013\",\r\n    \"postType\": \"link\",\r\n    \"link\": \"www.isep.ipp.pt\",\r\n    \"text\": \"\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "022 - TC003.13 - Create mpp014",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{poster-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"mpp014\",\r\n    \"postType\": \"link\",\r\n    \"link\": \"www.isep.ipp.pt\",\r\n    \"text\": \"\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "023 - TC003.14 - Create mpp015",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{poster-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"mpp015\",\r\n    \"postType\": \"link\",\r\n    \"link\": \"www.isep.ipp.pt\",\r\n    \"text\": \"\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "024 - TC003.15 - Assert 15 popular posts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Popular posts status code 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});\r",
+									"\r",
+									"const resposta = pm.response.json();\r",
+									"\r",
+									"pm.test('Number of posts to be 15', function(){\r",
+									"    pm.expect(resposta.posts.length).to.equal(15);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/popular",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"popular"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "025 - TC004.01 - Create mpp016",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{poster-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"mpp016\",\r\n    \"postType\": \"link\",\r\n    \"link\": \"www.isep.ipp.pt\",\r\n    \"text\": \"\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "026 - TC004.02 - Assert 15 popular posts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get Popular status code 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});\r",
+									"\r",
+									"const resposta = pm.response.json();\r",
+									"\r",
+									"pm.test('Number of posts to be 15', function(){\r",
+									"    pm.expect(resposta.posts.length).to.equal(15);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/popular",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"popular"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "027 - TC005.01 - Get last popular post slug",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get Popular status code 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});\r",
+									"\r",
+									"const resposta = pm.response.json();\r",
+									"\r",
+									"pm.collectionVariables.set(\"tc005-last-slug\", resposta.posts[14].slug);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/popular",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"popular"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "028 - TC005.02 - Upvote",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Upvote status code 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{voter1-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"slug\":\"{{tc005-last-slug}}\"}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/upvote",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"upvote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "029 - TC005.03 - Assert 1 vote",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get popular status code 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});\r",
+									"\r",
+									"const resposta = pm.response.json();\r",
+									"\r",
+									"pm.test('Number of posts to be 1', function(){\r",
+									"    pm.expect(resposta.posts[0].slug).to.equal(pm.collectionVariables.get(\"tc005-last-slug\"));\r",
+									"    pm.expect(resposta.posts[0].points).to.equal(1);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/popular",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"popular"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "030 - TC006.01 - Get last popular post slug",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get Popular Status code 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});\r",
+									"\r",
+									"const resposta = pm.response.json();\r",
+									"\r",
+									"pm.collectionVariables.set(\"tc006-last-slug\", resposta.posts[14].slug);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/popular",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"popular"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "031 - TC006.02 - Upvote 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Upvote status code 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{voter1-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"slug\":\"{{tc006-last-slug}}\"}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/upvote",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"upvote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "032 - TC006.03 - Upvote 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Upvote status code 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{voter2-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"slug\":\"{{tc006-last-slug}}\"}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/upvote",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"upvote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "033 - TC006.04 - Assert 2 votes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get Popular Posts Status 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});\r",
+									"\r",
+									"const resposta = pm.response.json();\r",
+									"\r",
+									"pm.test('Number of votes to be 2', function(){\r",
+									"    pm.expect(resposta.posts[0].slug).to.equal(pm.collectionVariables.get(\"tc006-last-slug\"));\r",
+									"    pm.expect(resposta.posts[0].points).to.equal(2);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/popular",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"popular"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "034 - TC007.01 - Get last popular post slug",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get Popular posts status code 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});\r",
+									"\r",
+									"const resposta = pm.response.json();\r",
+									"\r",
+									"pm.collectionVariables.set(\"tc007-last-slug\", resposta.posts[14].slug);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/popular",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"popular"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "035 - TC007.02 - Upvote 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Upvote status code 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{voter1-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"slug\":\"{{tc007-last-slug}}\"}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/upvote",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"upvote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "036 - TC007.03 - Upvote 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Upvote status code 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{voter2-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"slug\":\"{{tc007-last-slug}}\"}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/upvote",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"upvote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "037 - TC007.04 - Upvote 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Upvote status code 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{poster-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"slug\":\"{{tc007-last-slug}}\"}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/upvote",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"upvote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "038 - TC007.05 - Assert 3 votes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get Popular Posts status code 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});\r",
+									"\r",
+									"const resposta = pm.response.json();\r",
+									"\r",
+									"pm.test('Number of votes to be 3', function(){\r",
+									"    pm.expect(resposta.posts[0].slug).to.equal(pm.collectionVariables.get(\"tc007-last-slug\"));\r",
+									"    pm.expect(resposta.posts[0].points).to.equal(3);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/popular",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"popular"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "039 - TC008.01 - Get last popular post slug",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get Popular Posts status code 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});\r",
+									"\r",
+									"const resposta = pm.response.json();\r",
+									"\r",
+									"pm.collectionVariables.set(\"tc008-first-slug\", resposta.posts[0].slug);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/popular",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"popular"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "040 - TC008.02 - Downvote 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Downvote status code 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{voter1-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"slug\":\"{{tc008-first-slug}}\"}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/downvote",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"downvote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "041 - TC008.03 - Downvote 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Downvote status code 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{voter2-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"slug\":\"{{tc008-first-slug}}\"}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/downvote",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"downvote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "042 - TC008.04 - Downvote 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Downvote status code 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{poster-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"slug\":\"{{tc008-first-slug}}\"}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/downvote",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"downvote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "043 - TC008.05 - Assert not in first place anymore",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get popular posts status code 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});\r",
+									"\r",
+									"const resposta = pm.response.json();\r",
+									"\r",
+									"pm.test('The first post is not the one we downvoted', function(){\r",
+									"    pm.expect(resposta.posts[0].slug).not.to.equal(pm.collectionVariables.get(\"tc008-first-slug\"));\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/popular",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"popular"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "posts",
+			"item": [
+				{
+					"name": "Create user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Create User - Status code is 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"let userName = pm.variables.replaceIn(\"postuser{{$randomInt}}\");\r",
+									"let email = userName + \"@isep.ipp.pt\";\r",
+									"let password = \"complexPwd123\";\r",
+									"\r",
+									"pm.collectionVariables.set(\"posts-user-userName\", userName);\r",
+									"pm.collectionVariables.set(\"posts-user-email\", email);\r",
+									"pm.collectionVariables.set(\"posts-user-password\", password);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"username\":\"{{posts-user-userName}}\", \"email\":\"{{posts-user-email}}\", \"password\":\"{{posts-user-password}}\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const resposta = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Login - status code is 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"    pm.collectionVariables.set(\"posts-user-token\", resposta.accessToken);\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\": \"{{posts-user-userName}}\",\"password\": \"{{posts-user-password}}\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get current user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get current user - status code is 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{posts-user-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create post",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Create post - status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{posts-user-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"{{$randomCatchPhrase}}\",\r\n    \"postType\": \"text\",\r\n    \"link\": \"\",\r\n    \"text\": \"<p>{{$randomPhrase}}</p>\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get popular posts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get popular posts\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"    const resposta = pm.response.json();\r",
+									"\r",
+									"    pm.collectionVariables.set(\"posts-first-post-slug\", resposta.posts[0].slug);\r",
+									"\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/popular",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"popular"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get recent posts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get recent - Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmlhbHVpc2FAZ21haWwuY29tIiwidXNlcm5hbWUiOiIxMjM0NTY3ODkuIiwidXNlcklkIjoiZTI5MWE5ZjAtNDY1Yi00MGNlLThkMzItNjU0MGRmNzVmOTNmIiwiYWRtaW5Vc2VyIjpmYWxzZSwiaXNFbWFpbFZlcmlmaWVkIjpmYWxzZSwiaWF0IjoxNjg2ODU2MDY4LCJleHAiOjE2ODY4NTYzNjh9.IElj8aByp5GQ1FYg00oiPchBVKARi_SKqCDMfRoW_ts",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/recent",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"recent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get post by slug",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get post by slug - status code is 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts?slug={{posts-first-post-slug}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts"
+							],
+							"query": [
+								{
+									"key": "slug",
+									"value": "{{posts-first-post-slug}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upvote",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Upvote - status code is 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{posts-user-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"slug\":\"{{posts-first-post-slug}}\"}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/upvote",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"upvote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Downvote",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Downvote - Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{posts-user-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"slug\":\"{{posts-first-post-slug}}\"}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/downvote",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"downvote"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "comments",
+			"item": [
+				{
+					"name": "Create user for comments",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Comments Create User - Status code is 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"let userName = pm.variables.replaceIn(\"comuser{{$randomInt}}\");\r",
+									"let email = userName + \"@isep.ipp.pt\";\r",
+									"let password = \"complexPwd123\";\r",
+									"\r",
+									"pm.collectionVariables.set(\"comments-user-userName\", userName);\r",
+									"pm.collectionVariables.set(\"comments-user-email\", email);\r",
+									"pm.collectionVariables.set(\"comments-user-password\", password);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"username\":\"{{comments-user-userName}}\", \"email\":\"{{comments-user-email}}\", \"password\":\"{{comments-user-password}}\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login with user for comments",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const resposta = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Comments - Login - status code is 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"    pm.collectionVariables.set(\"comments-user-token\", resposta.accessToken);\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\": \"{{comments-user-userName}}\",\"password\": \"{{comments-user-password}}\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create post for comments",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Create post - status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{comments-user-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"{{$randomCatchPhrase}}\",\r\n    \"postType\": \"text\",\r\n    \"link\": \"\",\r\n    \"text\": \"<p>{{$randomPhrase}}/p>\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get recent posts for comment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Comment - Get recent posts\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"    const resposta = pm.response.json();\r",
+									"\r",
+									"    pm.collectionVariables.set(\"comments-post-slug\", resposta.posts[0].slug);\r",
+									"\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/recent",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"recent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create post comment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Comments - Status code is 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{comments-user-token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comment\": \"<p>{{$randomPhrase}}</p>\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/comments?slug={{comments-post-slug}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"comments"
+							],
+							"query": [
+								{
+									"key": "slug",
+									"value": "{{comments-post-slug}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get post comments by slug commented",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get post comments by slug - status code is 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"    const resposta = pm.response.json();\r",
+									"\r",
+									"    pm.collectionVariables.set(\"comments-post-comment-id\", resposta.comments[0].commentId);\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/api/v1/comments?slug={{comments-post-slug}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"comments"
+							],
+							"query": [
+								{
+									"key": "slug",
+									"value": "{{comments-post-slug}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get  Post comment by comment ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Comments - Get comment - Status code is 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/api/v1/comments/{{comments-post-comment-id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"comments",
+								"{{comments-post-comment-id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post a reply to a comment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Comments - Reply to comment - Status code is 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{comments-user-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"comment\": \"<p>{{$randomPhrase}}</p>\"}"
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/comments/{{comments-post-comment-id}}/reply?slug={{comments-post-slug}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"comments",
+								"{{comments-post-comment-id}}",
+								"reply"
+							],
+							"query": [
+								{
+									"key": "slug",
+									"value": "{{comments-post-slug}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post upvote to a comment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Comments - Upvote to comment - Status code is 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{comments-user-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/comments/{{comments-post-comment-id}}/upvote",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"comments",
+								"{{comments-post-comment-id}}",
+								"upvote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post downvote to a comment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Comments - Downvote to comment - Status code is 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{comments-user-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/comments/{{comments-post-comment-id}}/downvote",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"comments",
+								"{{comments-post-comment-id}}",
+								"downvote"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "All Posts Ascending",
+			"item": [
+				{
+					"name": "Get all Ascending",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"All posts ascending\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/allAscending",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"allAscending"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get posts for a day",
+			"item": [
+				{
+					"name": "Create user statistics",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Create User - Status code is 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"let userName = pm.variables.replaceIn(\"stuser{{$randomInt}}\");\r",
+									"let email = userName + \"@isep.ipp.pt\";\r",
+									"let password = \"complexPwd123\";\r",
+									"\r",
+									"pm.collectionVariables.set(\"statistics-user-userName\", userName);\r",
+									"pm.collectionVariables.set(\"statistics-user-email\", email);\r",
+									"pm.collectionVariables.set(\"statistics-user-password\", password);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"username\":\"{{statistics-user-userName}}\", \"email\":\"{{statistics-user-email}}\", \"password\":\"{{statistics-user-password}}\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login statistics",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const resposta = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Login - status code is 200\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"    pm.collectionVariables.set(\"statistics-user-token\", resposta.accessToken);\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\": \"{{statistics-user-userName}}\",\"password\": \"{{statistics-user-password}}\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get total",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get total\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"  //  const resposta = pm.response.json();\r",
+									"\r",
+									"  //  resposta.average.to.have(6);\r",
+									"\r",
+									"\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var moment = require('moment');\r",
+									"\r",
+									"pm.collectionVariables.set(\"statistics-today\", moment().format((\"YYYY-MM-DD\")));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{statistics-user-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/v1/posts/averageposts?day={{statistics-today}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"averageposts"
+							],
+							"query": [
+								{
+									"key": "day",
+									"value": "{{statistics-today}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "posts-user-userName",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "posts-user-email",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "posts-user-password",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "posts-user-token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "posts-first-post-slug",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "comments-user-userName",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "comments-user-email",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "comments-user-password",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "comments-user-token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "comments-post-slug",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "comments-post-comment-id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "poster-userName",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "poster-email",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "poster-password",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "poster-token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "voter1-userName",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "voter1-email",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "voter1-password",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "voter1-token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "voter2-userName",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "voter2-email",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "voter2-password",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "voter2-token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "tc005-last-slug",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "tc006-last-slug",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "tc007-last-slug",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "tc008-first-slug",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "statistics-user-userName",
+			"value": ""
+		},
+		{
+			"key": "statistics-user-email",
+			"value": ""
+		},
+		{
+			"key": "statistics-user-password",
+			"value": ""
+		},
+		{
+			"key": "statistics-user-token",
+			"value": ""
+		},
+		{
+			"key": "statistics-today",
+			"value": ""
+		}
+	]
+}

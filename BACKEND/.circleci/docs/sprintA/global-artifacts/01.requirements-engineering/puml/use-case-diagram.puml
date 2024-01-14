@@ -1,0 +1,79 @@
+@startuml Use Case Diagram
+'skinparam monochrome true
+skinparam packageStyle rectangle
+'skinparam shadowing false
+
+skinparam rectangle{
+    BorderColor black
+}
+
+'title Use Case Diagram Example
+
+left to right direction
+
+actor "Visitor" as Visitor
+actor "Member" as Member
+
+Member --|> Visitor
+
+
+
+rectangle "DDD Forum" {
+    usecase "US001: Register New Account" as UC1
+    usecase "US002: View Individual Post" as UC2
+    usecase "US003: View Member Info" as UC3
+    usecase "US004: View Popular Posts List" as UC4
+    usecase "US006: View New Posts List" as UC5
+    usecase "US005: Create a Post" as UC6
+    usecase "US007: Comment Post" as UC7
+    usecase "US008: Reply to Comment" as UC8
+    usecase "US009: Vote on Post" as UC9
+    usecase "US010: Vote on Comment" as UC10
+    usecase "US011: Sort Post by Ascending Order" as UC11
+    usecase "US012: View Member Details" as UC12
+    usecase "US013: Delete User" as UC13
+    usecase "US014: Member view average of Comments for a Specific Day" as UC14
+    usecase "US015: Member view average of Posts for a Specific Day" as UC15
+    usecase "US016: Member view Post with more Comments for a Specific Day" as UC16
+    usecase "US017: Member view top 3 Members that published more Comments for a Specific Day" as UC17
+    usecase "US018: Member view Members without any activity (Posts and Comments) for a Specific Day" as UC18
+    usecase "US019: Member view percentage of Posts without any Comment for a Specific Day" as UC19
+    usecase "US020: Member view hour of the day with more Posts for a Specific Day" as UC20
+    usecase "US021: Member View Popular posts, with more than 2/3 of the comments highlighted in green." as UC21
+    usecase "US022: Member View Recent posts, with less than 1/3 of the comments highlighted in red." as UC22
+    usecase "US023: Member View Unpopular posts, with more than 1/3 and less than 2/3 of the comments highlighted in yellow" as UC23
+    usecase "US024: Member View Popular posts, with more than five days should have the date in red " as UC24
+    usecase "US025: Member View Unpopular posts, with less than two days should have the date in green" as UC25
+    usecase "US026: Member View Popular posts, older than two days and newer than seven days should have the date in yellow text" as UC26
+    usecase "US027: Member View Popular posts, posts that have no comments should display a purple text" as UC27
+}
+
+Visitor --> UC1
+Visitor --> UC2
+Visitor --> UC3
+Visitor --> UC4
+Visitor --> UC5
+Member --> UC6
+Member --> UC7
+Member --> UC8
+Member --> UC9
+Member --> UC10
+Member --> UC11
+Member --> UC12
+Member --> UC13
+Member --> UC14
+Member --> UC15
+Member --> UC16
+Member --> UC17
+Member --> UC18
+Member --> UC19
+Member --> UC20
+Member --> UC21
+Member --> UC22
+Member --> UC23
+Member --> UC24
+Member --> UC25
+Member --> UC26
+Member --> UC27
+
+@enduml

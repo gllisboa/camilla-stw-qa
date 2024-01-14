@@ -1,0 +1,20 @@
+@startuml US013-SSD Sucess
+
+title Sequence diagram US013-SSD (Member delete user (Username))
+
+actor Member
+boundary System
+
+Member -> System: 1. Clicks on the member page
+activate Member
+activate System 
+System --> System: Check conditions for deletion (not deleted, no posts, no comments)
+System --> Member: 2. Verify if usernames meet conditions
+deactivate System 
+Member -> System: 3. Clicks on the delete button
+activate System
+System --> Member: 4. User automatically disappears from the list (page refreshes automatically)
+deactivate System
+deactivate Member
+
+@enduml

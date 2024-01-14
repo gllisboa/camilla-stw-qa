@@ -1,0 +1,35 @@
+@startuml US001
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - Registration of New Account - With all valid Parameters (Email + Username + Password)
+
+autonumber
+
+actor "User" as User
+participant "System" as System
+
+activate User
+
+User -> System : Access to the localhost:3000
+activate System
+
+System --> User : Loads the homepage
+deactivate System
+
+User -> System : Click on the "Join" button
+activate System
+
+System --> User : Loads the registration page (localhost:3000/register)
+deactivate System
+
+User -> System : Inserts unique parameters (Email + Username + Password)
+activate System
+
+System -> User : Returns a prompt message of "Account created successfully"
+
+deactivate System
+deactivate User
+
+@enduml

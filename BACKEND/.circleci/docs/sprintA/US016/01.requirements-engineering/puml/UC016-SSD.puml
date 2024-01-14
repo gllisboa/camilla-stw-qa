@@ -1,0 +1,9 @@
+@startuml UC016
+left to right direction
+actor "User" as us
+rectangle System {
+  usecase "Display post with most Comments on a given day" as UC16
+
+}
+us --> UC16
+@enduml

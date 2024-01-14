@@ -1,0 +1,31 @@
+@startuml US005e-SSD
+title SSD - US018 - View Members without any activity (Posts and Comments) for a Specific Day
+
+actor Member
+boundary System
+
+activate Member
+Member -> System: 1. Goes to DDD Forum Home Page
+activate System
+System -> Member: 2. Shows DDD Forum Home Page
+deactivate System
+Member -> System: 7. Logs into DDD Forum
+
+activate System
+System -> Member: 8. Confirms Login and returns to Home Page
+deactivate System
+
+Member -> System: 9. Clicks on the "Stats" Button
+
+activate System
+System -> Member: 10. Shows "Stats" Page
+deactivate System
+
+Member -> System: 11. Selects a date on a calendar and clicks on the refresh button
+
+activate System
+System -> Member: 12. Shows a list of Members without any activity (Posts and Comments) for a Specific Day
+deactivate System
+deactivate Member
+
+@enduml
