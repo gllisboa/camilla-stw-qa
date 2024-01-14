@@ -1,0 +1,27 @@
+@startuml US022
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - US022 SSD-  Highlight 1/3 less commented
+
+autonumber
+
+actor "User" as User
+participant "System" as System
+
+activate User
+    User -> System: Access the forum
+   
+  
+    activate System
+        System --> User : Return the default page 
+    deactivate System
+
+    User -> System : Access the "New" page
+
+    activate System
+    System --> User: Display less commented posts highlighted in red
+    deactivate System
+
+@enduml

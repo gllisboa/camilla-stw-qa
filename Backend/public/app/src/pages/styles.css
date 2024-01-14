@@ -1,0 +1,35 @@
+.userList {
+  display: flex;
+  flex-direction: column;
+}
+
+.userItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1cm; /* Espaço entre os itens de usuário */
+}
+
+.deleteButtonContainer {
+  display: flex;
+  align-items: center;
+}
+
+.deleteButton {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+  margin-left: 1cm; /* Espaço à esquerda do botão */
+}
+
+.deleteButton:hover {
+  background-color: #ff3333;
+  transform: translateY(-2px);
+}
+
+  

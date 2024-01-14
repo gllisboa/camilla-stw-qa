@@ -1,0 +1,57 @@
+@startuml SD- Get Average Number of Comments For a Specific Day
+
+title US014 SD - Get Average Number of Comments For a Specific Day
+
+actor Users
+participant Routes
+participant "getAverageCommentsForDayController:getAverageCommentsForDayController" as getAverageCommentsForDayController
+participant "useCase: getAverageCommentsForDay" as getAverageCommentsForDay
+participant "commentsRepo: ICommentsRepo" as ICommentsRepo
+database MySQL as database
+
+Users -> Routes : call Endpoint (method: GET, route: "/", header: "specificDay/:Date")
+activate Routes
+
+Routes -> getAverageCommentsForDayController: .execute(req, res)
+activate getAverageCommentsForDayController
+
+getAverageCommentsForDayController -> getAverageCommentsForDayController: .executeImpl(req: DecodedExpressRequest,res: express.Response)
+getAverageCommentsForDayController -> getAverageCommentsForDay: .execute(dto)
+activate getAverageCommentsForDay
+
+getAverageCommentsForDay -> ICommentsRepo: .getNumberOfCommentsOnDate (date: string)
+activate ICommentsRepo
+
+ICommentsRepo -> database: getNumberOfCommentsOnDate(date?: Date | string)
+activate database
+
+database --> ICommentsRepo: <Number>
+deactivate database
+
+ICommentsRepo --> getAverageCommentsForDay: <Number>
+
+deactivate ICommentsRepo
+
+getAverageCommentsForDay -> ICommentsRepo: .getNumberOfCommentsMembersOnDate (date: string)
+activate ICommentsRepo
+
+ICommentsRepo -> database: getNumberOfCommentsMembersOnDate (date?: Date | string)
+activate database
+
+database --> ICommentsRepo: <Number>
+deactivate database
+
+ICommentsRepo --> getAverageCommentsForDay: <Number>
+
+getAverageCommentsForDay -> getAverageCommentsForDay: calculateAverage
+
+getAverageCommentsForDay -> getAverageCommentsForDayController: Result.Ok <number>(average)
+
+getAverageCommentsForDayController -> Routes: this.ok<GetAverageCommentsForDayResponseDTO>
+
+deactivate ICommentsRepo
+deactivate getAverageCommentsForDay
+deactivate getAverageCommentsForDayController
+deactivate Routes
+
+@enduml

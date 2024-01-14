@@ -1,0 +1,24 @@
+@startuml US024-success
+title US024 - As a member, when I look at the popular posts, those with more than five days should display the date in red text.
+
+actor Member
+boundary System
+
+activate Member
+Member -> System: 1. Goes to DDD Forum Home Page
+activate System
+System -> Member: 2. Displays DDD Forum Home Page
+deactivate System
+Member -> System: 7. Logs into DDD Forum
+
+activate System
+System -> Member: 8. Confirms Login and returns to Home Page
+deactivate System
+
+Member -> System: 11. Clicks on the 'Popular' button
+
+activate System
+System -> Member: 12. Views popular posts with dates over five days in red
+deactivate Member
+
+@enduml
