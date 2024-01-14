@@ -1,9 +1,0 @@
-@startuml UC027
-left to right direction
-actor "User" as us
-rectangle System {
-  usecase "View popular posts" as UC27
-
-}
-us --> UC27
-@enduml

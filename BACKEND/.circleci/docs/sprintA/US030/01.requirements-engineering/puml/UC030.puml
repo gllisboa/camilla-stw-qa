@@ -1,9 +1,0 @@
-@startuml UC030
-left to right direction
-actor "User" as us
-rectangle System {
-  usecase "View my comments" as UC030
-
-}
-us --> UC030
-@enduml
